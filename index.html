@@ -15,12 +15,194 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+    <!-- CSS Style -->
+    <style>
+        /* Modern font and smooth scroll settings */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Ensures titles don't break the card layout */
+        .line-clamp-1 {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
 </head>
 
-<body class="bg-base-100">
+<body class="bg-base-100 min-h-screen">
 
-    <h1 class="text-3xl font-bold text-center mt-10">SwiftCart</h1>
+    <main>
+        <nav class="navbar bg-base-100/70 backdrop-blur-xl sticky top-0 z-50 border-b border-base-200 px-6 md:px-16">
+            <div class="flex-1">
+                <a class="text-2xl font-black text-primary tracking-tighter">SwiftCart</a>
+            </div>
+            <div class="flex-none gap-4">
+                <div class="indicator cursor-pointer transition-transform hover:scale-110">
+                    <span class="badge badge-primary badge-sm indicator-item font-bold" id="cart-count">0</span>
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
+                </div>
+            </div>
+        </nav>
 
+        <header class="relative h-[60vh] flex items-center justify-center bg-neutral overflow-hidden">
+            <img src="./Assets/banner-image.png" alt="Banner"
+                class="absolute inset-0 w-full h-full object-cover opacity-50" />
+
+            <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/70"></div>
+
+            <div class="relative z-10 text-center text-white px-6">
+                <h1 class="text-5xl md:text-6xl font-black mb-4 tracking-tight">Best Collection For You</h1>
+                <p class="text-lg opacity-90 mb-8 max-w-xl mx-auto">Elevate your lifestyle with our curated selection of
+                    high-quality goods across all categories.</p>
+                <a href="#shop"
+                    class="btn btn-primary rounded-full px-12 shadow-xl border-none transition-transform hover:scale-105">Shop
+                    Now</a>
+            </div>
+        </header>
+
+        <section class="py-12 bg-base-100 max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="flex items-center gap-4 bg-base-200 p-6 rounded-2xl hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-bolt text-primary text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold">Fast Delivery</h4>
+                        <p class="text-xs opacity-60">Within 24 Hours</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-base-200 p-6 rounded-2xl hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-headset text-primary text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold">24/7 Support</h4>
+                        <p class="text-xs opacity-60">Expert Assistance</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-base-200 p-6 rounded-2xl hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-shield-halved text-primary text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold">Secure Pay</h4>
+                        <p class="text-xs opacity-60">100% Protected</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 bg-base-200 p-6 rounded-2xl hover:bg-primary/5 transition-colors">
+                    <i class="fa-solid fa-arrow-rotate-left text-primary text-3xl"></i>
+                    <div>
+                        <h4 class="font-bold">Easy Return</h4>
+                        <p class="text-xs opacity-60">30 Day Policy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" class="py-20 px-6 md:px-16 max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl font-black mb-12 uppercase tracking-widest">Our Collection</h2>
+            <div id="category-container" class="flex flex-wrap justify-center gap-3 mb-16">
+                <button onclick="loadProducts('all')" class="btn btn-primary rounded-xl px-10 shadow-lg">All
+                    Arrivals</button>
+            </div>
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        </section>
+
+        <footer class="bg-neutral text-neutral-content mt-20">
+            <div class="max-w-7xl mx-auto px-6 py-16">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+                    <div class="space-y-4">
+                        <h3 class="text-3xl font-black text-white tracking-tighter">SwiftCart<span
+                                class="text-primary">.</span></h3>
+                        <p class="text-sm opacity-70 leading-relaxed">
+                            Elevating your online shopping experience with premium products and lightning-fast delivery
+                            since 2026.
+                        </p>
+                        <div class="flex gap-4 text-xl pt-4">
+                            <a class="hover:text-primary transition-all cursor-pointer"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a class="hover:text-primary transition-all cursor-pointer"><i
+                                    class="fa-brands fa-x-twitter"></i></a>
+                            <a class="hover:text-primary transition-all cursor-pointer"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-white">Quick Links</h4>
+                        <ul class="space-y-2 text-sm opacity-70">
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">New
+                                    Arrivals</a></li>
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Best
+                                    Sellers</a></li>
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Discounts</a>
+                            </li>
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Affiliate
+                                    Program</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-white">Support</h4>
+                        <ul class="space-y-2 text-sm opacity-70">
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Help
+                                    Center</a></li>
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Order
+                                    Tracking</a></li>
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Privacy
+                                    Policy</a></li>
+                            <li><a
+                                    class="hover:text-primary hover:translate-x-1 transition-all inline-block cursor-pointer">Returns
+                                    & Refunds</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-white">Newsletter</h4>
+                        <p class="text-sm opacity-70">Subscribe to get special offers and news.</p>
+                        <div class="flex flex-col gap-2">
+                            <input type="email" placeholder="email@example.com"
+                                class="input input-bordered w-full bg-neutral-focus text-white rounded-xl border-base-300" />
+                            <button class="btn btn-primary rounded-xl w-full">Subscribe</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div
+                    class="border-t border-white/10 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs opacity-50 uppercase tracking-widest">
+                    <p>© 2026 SwiftCart Inc. Designed for Excellence.</p>
+                    <div class="flex gap-8">
+                        <span>Terms of Service</span>
+                        <span>Privacy Policy</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+
+    <dialog id="product_modal" class="modal modal-bottom sm:modal-middle backdrop-blur-sm">
+        <div class="modal-box max-w-4xl p-0 overflow-hidden bg-base-100 border border-base-200">
+            <form method="dialog">
+                <button class="btn btn-sm btn-circle btn-ghost absolute right-4 top-4 z-50">✕</button>
+            </form>
+
+            <div id="modal-content" class="p-8">
+            </div>
+        </div>
+    </dialog>
+
+    <!-- External JS Script File Added -->
     <script src="./js/script.js"></script>
 </body>
 
